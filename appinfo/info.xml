@@ -2,7 +2,7 @@
 <info>
 	<id>smb_test</id>
 	<name>SMB connection test</name>
-	<description>SMB connection test</description>
+	<description>Nextcloud app to debug smb connections </description>
 	<licence>AGPL</licence>
 	<author>Robin Appelman</author>
 	<namespace>SMBTest</namespace>
