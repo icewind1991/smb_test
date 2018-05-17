@@ -1,0 +1,12 @@
+div.error {
+  border: 1px solid red;
+  background: #ff8888;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+
+  .message {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+}

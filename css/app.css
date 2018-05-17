@@ -1,0 +1,14 @@
+.content {
+	width: 100%;
+}
+
+#smbtest-root {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: block;
+}
+
+#smbtest-root > div {
+	height: 100%;
+}

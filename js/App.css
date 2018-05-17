@@ -1,0 +1,13 @@
+#app-root {
+  margin: 5px;
+
+  h2 {
+    margin: 0 -5px;
+    padding: 5px 5px;
+    border-bottom: solid 1px #eee;
+  }
+
+  .backend {
+    padding: 5px;
+  }
+}

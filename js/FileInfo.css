@@ -1,0 +1,28 @@
+.fileinfo-table {
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+
+  th {
+    background: #f8f8f8;
+  }
+
+  td, th {
+    padding: 5px;
+  }
+
+  td, th {
+    &:not(:first-child) {
+      width: 150px;
+      text-align: right;
+    }
+  }
+
+  tr.directory td {
+    font-weight: bold;
+  }
+
+  tr.hidden td {
+    color: #888;
+  }
+}

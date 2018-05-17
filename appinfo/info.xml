@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<info>
+	<id>smb_test</id>
+	<name>SMB connection test</name>
+	<description>SMB connection test</description>
+	<licence>AGPL</licence>
+	<author>Robin Appelman</author>
+	<namespace>SMBTest</namespace>
+
+	<settings>
+		<admin>OCA\SMBTest\Settings\Admin</admin>
+		<admin-section>OCA\SMBTest\Settings\Section</admin-section>
+	</settings>
+
+	<dependencies>
+		<nextcloud min-version="12" max-version="14"/>
+	</dependencies>
+</info>
