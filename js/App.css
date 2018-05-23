@@ -7,6 +7,14 @@
     border-bottom: solid 1px #eee;
   }
 
+  form {
+    margin: 5px;
+
+    th {
+      padding: 5px;
+    }
+  }
+
   .backend {
     padding: 5px;
   }

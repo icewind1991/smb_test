@@ -41,11 +41,11 @@ export class App extends Component<{}, AppState> {
 					</thead>
 					<tbody>
 					<tr>
-						<td><input name='hostname' type='text'/></td>
-						<td><input name='username' type='text'/></td>
-						<td><input name='workgroup' type='text'/></td>
-						<td><input name='password' type='password'/></td>
-						<td><input name='share' type='text'/></td>
+						<td><input name='hostname' type='text' placeholder="Hostname"/></td>
+						<td><input name='username' type='text' placeholder="Username"/></td>
+						<td><input name='workgroup' type='text' placeholder="Workgroup"/></td>
+						<td><input name='password' type='password' placeholder="Password"/></td>
+						<td><input name='share' type='text' placeholder="Share"/></td>
 						<td><input type='submit' value='Test'/></td>
 					</tr>
 					</tbody>
