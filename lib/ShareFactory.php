@@ -21,15 +21,17 @@
 
 namespace OCA\SMBTest;
 
-
-use Icewind\SMB\NativeServer;
-use Icewind\SMB\Server;
-
 class ShareFactory {
 	public function getShare($hostname, $username, $workgroup, $password, $share) {
-		$server = NativeServer::NativeAvailable() ?
-			new NativeServer($hostname, "$workgroup\\$username", $password) :
-			new Server($hostname, "$workgroup\\$username", $password);
+		if (class_exists('Icewind\SMB\ServerFactory')) {
+			$auth = new \Icewind\SMB\BasicAuth($username, $workgroup, $password);
+			$factory = new \Icewind\SMB\ServerFactory();
+			$server = $factory->createServer($hostname, $auth);
+		} else {
+			$server = \Icewind\SMB\NativeServer::NativeAvailable() ?
+				new \Icewind\SMB\NativeServer($hostname, "$workgroup\\$username", $password) :
+				new \Icewind\SMB\Server($hostname, "$workgroup\\$username", $password);
+		}
 		return $server->getShare($share);
 	}
 }

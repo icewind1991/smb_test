@@ -41,9 +41,18 @@ class SmbController extends Controller {
 	}
 
 	public function info() {
-		return [
-			'native' => NativeServer::NativeAvailable()
-		];
+		if (class_exists('Icewind\SMB\ServerFactory')) {
+			$auth = new \Icewind\SMB\AnonymousAuth();
+			$factory = new \Icewind\SMB\ServerFactory();
+			$server = $factory->createServer('', $auth);
+			return [
+				'native' => $server instanceof \Icewind\SMB\Native\NativeServer
+			];
+		} else {
+			return [
+				'native' => \Icewind\SMB\NativeServer::NativeAvailable()
+			];
+		}
 	}
 
 	/**
