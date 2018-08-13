@@ -1,8 +1,9 @@
 import * as React from "react";
 import {LoadComponent} from "./LoadComponent";
-import {ApiResult, Exception} from "./SMBProvider";
+import {ApiResult, Exception, TraceLine} from "./SMBProvider";
 
 import './ApiLoadComponent.css';
+import {TraceLineComponent} from "./TraceLine";
 
 export interface LoadComponentProps<T> {
 	errorMessage: string;
@@ -16,18 +17,46 @@ export function ApiLoadComponent<T>({load, renderer, placeholder, errorMessage}:
 		load={load}
 		placeholder={placeholder}
 		renderer={(result: ApiResult<T>) => result.success ? renderer(result.data) :
-			<Error exception={result.exception} errorMessage={errorMessage}/>}
+			<Error exception={result.exception} errorMessage={errorMessage}
+				   expanded={true}/>}
 	/>
 }
 
 export interface ErrorProps {
 	exception: Exception;
 	errorMessage: string;
+	expanded: boolean;
 }
 
-export function Error({exception, errorMessage}: ErrorProps) {
-	return <div className="error">
-		<p className="message">{errorMessage}</p>
-		<p className="exception">{exception.Exception}: {exception.Message}</p>
-	</div>;
+export interface ErrorState {
+	toggled: boolean;
+}
+
+export class Error extends React.Component<ErrorProps, ErrorState> {
+	state: ErrorState = {
+		toggled: false
+	};
+
+	toggle() {
+		this.setState({toggled: !this.state.toggled});
+	}
+
+	render() {
+		return <div className="error" onClick={this.toggle.bind(this)}>
+			<p className="message">{this.props.errorMessage}</p>
+			<p className="exception">{this.props.exception.Exception}: {this.props.exception.Message}</p>
+			<p>
+				{
+					(this.props.expanded !== this.state.toggled) ?
+						<ol className='trace' start={0}>
+							{this.props.exception.Trace.map((trace, i) => {
+								return (
+									<TraceLineComponent key={i} {...trace}/>
+								);
+							})}
+						</ol> : []
+				}
+			</p>
+		</div>;
+	}
 }

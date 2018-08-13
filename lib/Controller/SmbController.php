@@ -106,17 +106,26 @@ class SmbController extends Controller {
 	}
 
 	private function encodeFileInfo(IFileInfo $info) {
-		return [
-			'path' => $info->getPath(),
-			'name' => $info->getName(),
-			'mtime' => $info->getMTime(),
-			'size' => $info->getSize(),
-			'directory' => $info->isDirectory(),
-			'archived' => $info->isArchived(),
-			'hidden' => $info->isHidden(),
-			'readonly' => $info->isReadOnly(),
-			'system' => $info->isSystem(),
-		];
+		try {
+			$info->isHidden();
+			return [
+				'path' => $info->getPath(),
+				'name' => $info->getName(),
+				'mtime' => $info->getMTime(),
+				'size' => $info->getSize(),
+				'directory' => $info->isDirectory(),
+				'archived' => $info->isArchived(),
+				'hidden' => $info->isHidden(),
+				'readonly' => $info->isReadOnly(),
+				'system' => $info->isSystem(),
+			];
+		} catch (\Exception $e) {
+			return [
+				'path' => $info->getPath(),
+				'name' => $info->getName(),
+				'error' => $this->encodeException($e)
+			];
+		}
 	}
 
 	private function encodeException(\Exception $e) {

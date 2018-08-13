@@ -12,6 +12,25 @@ export interface Exception {
 	Exception: string;
 	Message: string;
 	Code: number;
+	File: string;
+	Line: number;
+	Trace: TraceLine[];
+}
+
+export interface TraceLine {
+	file: string;
+	line: number;
+	function: string;
+	class: string;
+	type: string;
+	args: TraceArgsObject[];
+}
+
+export type TraceArgsType = string | number | TraceArgsObject;
+
+export interface TraceArgsObject {
+	__class__: string;
+	[name: string]: any;
 }
 
 export type ApiResult<T> = ApiFailureResult | ApiSuccessResult<T>;
@@ -32,6 +51,12 @@ export interface IFileInfo {
 	system: boolean;
 }
 
+export interface ErrorResults {
+	path: string;
+	name: string;
+	error: Exception;
+}
+
 export interface ConnectionDetails {
 	hostname: string;
 	username: string;
@@ -45,7 +70,7 @@ export class SMBProvider {
 		return $.getJSON(OC.generateUrl('/apps/smb_test/info'));
 	}
 
-	stat(connection: ConnectionDetails, path: string): Promise<ApiResult<IFileInfo>> {
+	stat(connection: ConnectionDetails, path: string): Promise<ApiResult<IFileInfo | ErrorResults>> {
 		return $.getJSON(OC.generateUrl('/apps/smb_test/stat'), {
 			...connection,
 			path
