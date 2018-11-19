@@ -5,6 +5,7 @@
       "es2015.promise",
       "es6"
     ],
+    "outDir": "build",
     "module": "ES6",
     "moduleResolution": "node",
     "target": "es2015",
