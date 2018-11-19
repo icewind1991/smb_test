@@ -53,6 +53,9 @@ declare namespace OC {
 
 declare function t(app: string, string: string, vars?: { [key: string]: string }, count?: number, options?: EscapeOptions): string;
 
+declare function humanFileSize(size: number): string;
+declare function relative_modified_date(mtime: number): string;
+
 declare const oc_config: {
 	blacklist_files_regex: string;
 	enable_avatars: boolean;
