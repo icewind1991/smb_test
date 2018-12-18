@@ -16,7 +16,7 @@
 	<screenshot>https://raw.githubusercontent.com/icewind1991/smb_test/master/img/screenshot.png</screenshot>
 
 	<dependencies>
-		<nextcloud min-version="12" max-version="15"/>
+		<nextcloud min-version="12" max-version="16"/>
 	</dependencies>
 
 	<settings>
