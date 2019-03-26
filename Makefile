@@ -20,7 +20,7 @@ clean:
 node_modules: package.json
 	npm install --deps
 
-build/main.js: node_modules $(jssources)
+build/main.js: node_modules $(jssources) webpack.prod.config.js
 	$(webpack) --verbose --colors --display-error-details --config webpack.prod.config.js
 
 .PHONY: watch

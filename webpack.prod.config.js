@@ -11,7 +11,6 @@ module.exports = {
 	devtool: 'source-map',
 	mode: 'production',
 	entry: [
-		'babel-polyfill',
 		'./js/index.tsx'
 	],
 	output: {
