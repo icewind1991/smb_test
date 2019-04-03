@@ -17,7 +17,7 @@ const render = Component => {
 	)
 };
 
-$(() => {
+document.addEventListener("DOMContentLoaded", () => {
 	render(App);
 });
 

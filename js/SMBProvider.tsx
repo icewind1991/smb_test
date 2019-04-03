@@ -65,22 +65,37 @@ export interface ConnectionDetails {
 	share: string;
 }
 
+(function () {
+	var originalFetch = fetch;
+	window.fetch = function(input: RequestInfo, init?: RequestInit): Promise<Response> {
+		init = init || {};
+		init.headers = init.headers || {};
+		init.headers["requesttoken"] = oc_requesttoken;
+		return originalFetch(input, init);
+	}
+})();
+
 export class SMBProvider {
 	info(): Promise<InfoResult> {
-		return $.getJSON(OC.generateUrl('/apps/smb_test/info'));
+		return fetch(OC.generateUrl('/apps/smb_test/info'))
+			.then(response => response.json());
 	}
 
 	stat(connection: ConnectionDetails, path: string): Promise<ApiResult<IFileInfo | ErrorResults>> {
-		return $.getJSON(OC.generateUrl('/apps/smb_test/stat'), {
+		let params = new URLSearchParams({
 			...connection,
 			path
-		});
+		}).toString();
+		return fetch(OC.generateUrl('/apps/smb_test/stat?{params}', {params}))
+			.then(response => response.json());
 	}
 
 	dir(connection: ConnectionDetails, path: string): Promise<ApiResult<IFileInfo[]>> {
-		return $.getJSON(OC.generateUrl('/apps/smb_test/dir'), {
+		let params = new URLSearchParams({
 			...connection,
 			path
-		});
+		}).toString();
+		return fetch(OC.generateUrl('/apps/smb_test/dir?{params}', {params}))
+			.then(response => response.json());
 	}
 }

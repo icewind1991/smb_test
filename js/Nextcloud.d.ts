@@ -69,6 +69,8 @@ declare const oc_config: {
 	versionString: string;
 };
 
+declare const oc_requesttoken;
+
 declare module 'NC' {
 	export interface OCSResult<T> {
 		ocs: {

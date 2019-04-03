@@ -46,7 +46,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanPlugin(['build']),
+		new CleanPlugin(),
 		new ExtractTextPlugin("[name].css"),
 		new webpack.DefinePlugin({
 			__CLIENT__: true,
