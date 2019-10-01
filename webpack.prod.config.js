@@ -2,8 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const CleanPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const assetsPath = path.join(__dirname, 'build');
 
@@ -35,19 +34,21 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract({
-					fallback: "style-loader",
-					use: [
-						'css-loader',
-						'postcss-loader'
-					]
-				})
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: process.env.NODE_ENV === 'development',
+						},
+					},
+					'css-loader',
+					'postcss-loader'
+				]
 			}
 		]
 	},
 	plugins: [
-		new CleanPlugin(),
-		new ExtractTextPlugin("[name].css"),
+		new MiniCssExtractPlugin("[name].css"),
 		new webpack.DefinePlugin({
 			__CLIENT__: true,
 			__SERVER__: false,
