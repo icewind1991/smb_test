@@ -1,5 +1,6 @@
 import React from 'react';
 import {ErrorResults, IFileInfo} from "./SMBProvider";
+import moment from '@nextcloud/moment'
 
 import './FileInfo.css';
 import {Error} from "./ApiLoadComponent";
@@ -12,6 +13,26 @@ export function FileInfo({info}: FileInfoProps) {
 	return <span>
 		{info.name}: {humanFileSize(info.size)}
 	</span>;
+}
+
+function humanFileSize(bytes: number): string {
+	const thresh = 1024;
+
+	if (Math.abs(bytes) < thresh) {
+		return bytes + ' B';
+	}
+
+	const units = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+	let u = -1;
+	const r = 10;
+
+	do {
+		bytes /= thresh;
+		++u;
+	} while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+
+
+	return bytes.toFixed(1) + ' ' + units[u];
 }
 
 function getRowClass(info: IFileInfo) {
@@ -41,7 +62,7 @@ function FileInfoRow(info: IFileInfo | ErrorResults, key: number) {
 				{info.directory ? '' : humanFileSize(info.size)}
 			</td>
 			<td>
-				{relative_modified_date(info.mtime)}
+				{moment(info.mtime * 1000).fromNow()}
 			</td>
 		</tr>;
 	}
