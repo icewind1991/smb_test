@@ -86,7 +86,7 @@ export class SMBProvider {
 			...connection,
 			path
 		}).toString();
-		return fetch(OC.generateUrl('/apps/smb_test/stat?{params}', {params}))
+		return fetch(OC.generateUrl('/apps/smb_test/stat') + '?' + params)
 			.then(response => response.json());
 	}
 
@@ -95,7 +95,7 @@ export class SMBProvider {
 			...connection,
 			path
 		}).toString();
-		return fetch(OC.generateUrl('/apps/smb_test/dir?{params}', {params}))
+		return fetch(OC.generateUrl('/apps/smb_test/dir') + '?' + params)
 			.then(response => response.json());
 	}
 }
