@@ -24,7 +24,7 @@ CHANGELOG.md: node_modules
 	node_modules/.bin/changelog
 
 build/main.js: node_modules $(jssources) webpack.prod.config.js
-	$(webpack) --verbose --colors --display-error-details --config webpack.prod.config.js
+	$(webpack) --config webpack.prod.config.js
 
 .PHONY: watch
 watch: node_modules
