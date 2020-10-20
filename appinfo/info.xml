@@ -5,7 +5,7 @@
 	<name>SMB connection test</name>
 	<summary>SMB connection test app</summary>
 	<description>Nextcloud app to debug smb connections </description>
-	<version>0.2.6</version>
+	<version>0.3.0</version>
 	<licence>agpl</licence>
 	<author>Robin Appelman</author>
 	<namespace>SMBTest</namespace>
