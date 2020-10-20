@@ -56,7 +56,7 @@ function FileInfoRow(info: IFileInfo | ErrorResults, key: number) {
 	} else {
 		return <tr key={key} className={getRowClass(info)}>
 			<td>
-				{info.name}
+				{info.name ? info.name : '<root>'}
 				{info.readonly ? <span className="readonly">readonly</span> : []}
 			</td>
 			<td>

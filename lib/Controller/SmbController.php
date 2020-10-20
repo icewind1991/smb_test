@@ -92,7 +92,9 @@ class SmbController extends Controller {
 	public function dir($hostname, $username, $workgroup, $password, $share, $path) {
 		try {
 			$share = $this->shareFactory->getShare($hostname, $username, $workgroup, $password, $share);
+			$root = $this->encodeFileInfo($share->stat($path));
 			$data = array_map([$this, 'encodeFileInfo'], $share->dir($path));
+			$data[] = $root;
 			return [
 				'success' => true,
 				'data' => $data
