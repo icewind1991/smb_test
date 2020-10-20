@@ -25,4 +25,9 @@
   tr.hidden td {
     color: #888;
   }
+
+  .readonly {
+    float: right;
+    opacity: 0.5;
+  }
 }

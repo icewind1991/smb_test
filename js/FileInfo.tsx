@@ -57,6 +57,7 @@ function FileInfoRow(info: IFileInfo | ErrorResults, key: number) {
 		return <tr key={key} className={getRowClass(info)}>
 			<td>
 				{info.name}
+				{info.readonly ? <span className="readonly">readonly</span> : []}
 			</td>
 			<td>
 				{info.directory ? '' : humanFileSize(info.size)}
