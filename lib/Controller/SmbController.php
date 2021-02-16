@@ -22,7 +22,6 @@
 namespace OCA\SMBTest\Controller;
 
 use Icewind\SMB\IFileInfo;
-use Icewind\SMB\NativeServer;
 use OCA\SMBTest\ExceptionSerializer;
 use OCA\SMBTest\ShareFactory;
 use OCP\AppFramework\Controller;

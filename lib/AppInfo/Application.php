@@ -21,9 +21,7 @@
 
 namespace OCA\SMBTest\AppInfo;
 
-use OCA\SMBTest\Controller\SmbController;
 use OCP\AppFramework\App;
-use OCP\AppFramework\IAppContainer;
 
 class Application extends App {
 	public function __construct(array $urlParams = []) {
