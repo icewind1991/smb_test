@@ -21,7 +21,11 @@
 
 namespace OCA\SMBTest\Controller;
 
+use Icewind\SMB\AnonymousAuth;
 use Icewind\SMB\IFileInfo;
+use Icewind\SMB\Native\NativeServer;
+use Icewind\SMB\ServerFactory;
+use Icewind\SMB\System;
 use OCA\SMBTest\ExceptionSerializer;
 use OCA\SMBTest\ShareFactory;
 use OCP\AppFramework\Controller;
@@ -41,15 +45,15 @@ class SmbController extends Controller {
 
 	public function info() {
 		if (class_exists('Icewind\SMB\ServerFactory')) {
-			$auth = new \Icewind\SMB\AnonymousAuth();
-			$factory = new \Icewind\SMB\ServerFactory();
+			$auth = new AnonymousAuth();
+			$factory = new ServerFactory();
 			$server = $factory->createServer('', $auth);
 			return [
-				'native' => $server instanceof \Icewind\SMB\Native\NativeServer
+				'native' => $server instanceof NativeServer
 			];
 		} else {
 			return [
-				'native' => \Icewind\SMB\NativeServer::NativeAvailable()
+				'native' => NativeServer::available(new System())
 			];
 		}
 	}
