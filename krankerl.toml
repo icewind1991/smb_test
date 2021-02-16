@@ -1,0 +1,5 @@
+[package]
+before_cmds = [
+	"npm ci",
+	"node_modules/.bin/webpack --config webpack.prod.config.js"
+]

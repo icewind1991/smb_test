@@ -13,5 +13,7 @@ target
 tests
 composer.*
 .php_cs.dist
-psalm.xml
+psalm*.xml
 Dockerfile
+node_modules
+Makefile
