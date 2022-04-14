@@ -38,7 +38,7 @@ jobs:
 
       - name: Install dependencies & build
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build --if-present
 
       - name: Check webpack build changes

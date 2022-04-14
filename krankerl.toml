@@ -1,5 +1,5 @@
 [package]
 before_cmds = [
-	"npm ci",
+	"npm ci --legacy-peer-deps",
 	"node_modules/.bin/webpack --config webpack.prod.config.js"
 ]
