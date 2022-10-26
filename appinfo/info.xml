@@ -5,7 +5,7 @@
 	<name>SMB connection test</name>
 	<summary>SMB connection test app</summary>
 	<description>Nextcloud app to debug smb connections </description>
-	<version>0.3.4</version>
+	<version>0.3.5</version>
 	<licence>agpl</licence>
 	<author>Robin Appelman</author>
 	<namespace>SMBTest</namespace>
@@ -16,7 +16,7 @@
 	<screenshot>https://raw.githubusercontent.com/icewind1991/smb_test/master/img/screenshot.png</screenshot>
 
 	<dependencies>
-		<nextcloud min-version="22" max-version="24"/>
+		<nextcloud min-version="23" max-version="25"/>
 	</dependencies>
 
 	<settings>
