@@ -47,7 +47,7 @@
 		"react-dom": "18.0.0",
 		"react-responsive": "8.2.0",
 		"react-time": "4.3.0",
-		"@nextcloud/moment": "1.2.0"
+		"@nextcloud/moment": "1.2.1"
 	},
 	"scripts": {
 		"build": "NODE_ENV=production webpack --progress --config webpack.prod.config.js",
