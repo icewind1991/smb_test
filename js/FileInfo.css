@@ -4,7 +4,7 @@
   overflow: auto;
 
   th {
-    background: #f8f8f8;
+    background: var(--color-placeholder-dark);
   }
 
   td, th {
