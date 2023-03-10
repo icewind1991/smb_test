@@ -89,7 +89,7 @@ jobs:
         if: ${{ steps.versions.outputs.nodeVersion }}
         run: |
           cd ${{ env.APP_NAME }}
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build
 
       - name: Check Krankerl config
