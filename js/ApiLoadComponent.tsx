@@ -42,6 +42,10 @@ export class Error extends React.Component<ErrorProps, ErrorState> {
 	}
 
 	render() {
+		if (!this.props.exception) {
+			return <p className="message">{this.props.errorMessage}</p>
+		}
+
 		return <div className="error" onClick={this.toggle.bind(this)}>
 			<p className="message">{this.props.errorMessage}</p>
 			<p className="exception">{this.props.exception.Exception}: {this.props.exception.Message}</p>
