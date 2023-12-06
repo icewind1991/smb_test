@@ -65,19 +65,17 @@ export interface ConnectionDetails {
 	share: string;
 }
 
-(function () {
-	var originalFetch = fetch;
-	window.fetch = function(input: RequestInfo, init?: RequestInit): Promise<Response> {
-		init = init || {};
-		init.headers = init.headers || {};
-		init.headers["requesttoken"] = oc_requesttoken;
-		return originalFetch(input, init);
-	}
-})();
+const fetchCsrf = function(input: RequestInfo, init?: RequestInit): Promise<Response> {
+	init = init || {};
+	init.headers = new Headers();
+	init.headers.set("requesttoken", OC.requestToken);
+	console.log(input, init);
+	return fetch(input, init);
+}
 
 export class SMBProvider {
 	info(): Promise<InfoResult> {
-		return fetch(OC.generateUrl('/apps/smb_test/info'))
+		return fetchCsrf(OC.generateUrl('/apps/smb_test/info'))
 			.then(response => response.json());
 	}
 
@@ -86,7 +84,7 @@ export class SMBProvider {
 			...connection,
 			path
 		}).toString();
-		return fetch(OC.generateUrl('/apps/smb_test/stat') + '?' + params)
+		return fetchCsrf(OC.generateUrl('/apps/smb_test/stat') + '?' + params)
 			.then(response => response.json());
 	}
 
@@ -95,7 +93,7 @@ export class SMBProvider {
 			...connection,
 			path
 		}).toString();
-		return fetch(OC.generateUrl('/apps/smb_test/dir') + '?' + params)
+		return fetchCsrf(OC.generateUrl('/apps/smb_test/dir') + '?' + params)
 			.then(response => response.json());
 	}
 }

@@ -49,6 +49,8 @@ declare namespace OC {
 	const PERMISSION_DELETE = 8;
 	const PERMISSION_SHARE = 16;
 	const PERMISSION_ALL = 31;
+
+	const requestToken;
 }
 
 declare function t(app: string, string: string, vars?: { [key: string]: string }, count?: number, options?: EscapeOptions): string;
@@ -68,8 +70,6 @@ declare const oc_config: {
 	version: string;
 	versionString: string;
 };
-
-declare const oc_requesttoken;
 
 declare module 'NC' {
 	export interface OCSResult<T> {
