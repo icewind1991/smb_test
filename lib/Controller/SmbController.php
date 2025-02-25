@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) 2018 Robin Appelman <robin@icewind.nl>
  *
@@ -37,7 +38,7 @@ class SmbController extends Controller {
 	public function __construct(
 		$AppName,
 		IRequest $request,
-		ShareFactory $shareFactory
+		ShareFactory $shareFactory,
 	) {
 		parent::__construct($AppName, $request);
 		$this->shareFactory = $shareFactory;
