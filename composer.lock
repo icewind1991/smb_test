@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bamarni/composer-bin-plugin",
-            "version": "1.8.2",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bamarni/composer-bin-plugin.git",
-                "reference": "92fd7b1e6e9cdae19b0d57369d8ad31a37b6a880"
+                "reference": "641d0663f5ac270b1aeec4337b7856f76204df47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bamarni/composer-bin-plugin/zipball/92fd7b1e6e9cdae19b0d57369d8ad31a37b6a880",
-                "reference": "92fd7b1e6e9cdae19b0d57369d8ad31a37b6a880",
+                "url": "https://api.github.com/repos/bamarni/composer-bin-plugin/zipball/641d0663f5ac270b1aeec4337b7856f76204df47",
+                "reference": "641d0663f5ac270b1aeec4337b7856f76204df47",
                 "shasum": ""
             },
             "require": {
@@ -25,12 +25,12 @@
                 "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "^2.0",
+                "composer/composer": "^2.2.26",
                 "ext-json": "*",
                 "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^8.5 || ^9.5",
+                "phpstan/phpstan": "^1.8 || ^2.0",
+                "phpstan/phpstan-phpunit": "^1.1 || ^2.0",
+                "phpunit/phpunit": "^8.5 || ^9.6 || ^10.0",
                 "symfony/console": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
                 "symfony/finder": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
                 "symfony/process": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0"
@@ -59,23 +59,17 @@
             ],
             "support": {
                 "issues": "https://github.com/bamarni/composer-bin-plugin/issues",
-                "source": "https://github.com/bamarni/composer-bin-plugin/tree/1.8.2"
+                "source": "https://github.com/bamarni/composer-bin-plugin/tree/1.9.1"
             },
-            "time": "2022-10-31T08:38:03+00:00"
+            "time": "2026-02-04T10:18:12+00:00"
         },
         {
             "name": "icewind/smb",
             "version": "v3.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/icewind1991/SMB.git",
+                "url": "https://codeberg.org/icewind/SMB",
                 "reference": "e6904cbe75f678335092f4861c60c656b1a99e84"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/icewind1991/SMB/zipball/e6904cbe75f678335092f4861c60c656b1a99e84",
-                "reference": "e6904cbe75f678335092f4861c60c656b1a99e84",
-                "shasum": ""
             },
             "require": {
                 "icewind/streams": ">=0.7.3",
@@ -104,10 +98,6 @@
                 }
             ],
             "description": "php wrapper for smbclient and libsmbclient-php",
-            "support": {
-                "issues": "https://github.com/icewind1991/SMB/issues",
-                "source": "https://github.com/icewind1991/SMB/tree/v3.7.0"
-            },
             "time": "2024-11-11T14:08:34+00:00"
         },
         {
@@ -115,14 +105,8 @@
             "version": "v0.7.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/icewind1991/Streams.git",
+                "url": "https://codeberg.org/icewind/streams",
                 "reference": "cb2bd3ed41b516efb97e06e8da35a12ef58ba48b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/icewind1991/Streams/zipball/cb2bd3ed41b516efb97e06e8da35a12ef58ba48b",
-                "reference": "cb2bd3ed41b516efb97e06e8da35a12ef58ba48b",
-                "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
@@ -149,10 +133,6 @@
                 }
             ],
             "description": "A set of generic stream wrappers",
-            "support": {
-                "issues": "https://github.com/icewind1991/Streams/issues",
-                "source": "https://github.com/icewind1991/Streams/tree/v0.7.8"
-            },
             "time": "2024-12-05T14:36:22+00:00"
         }
     ],
@@ -163,16 +143,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "5d4e0489bad530d511c988afacf336ed087fa765"
+                "reference": "c3db5d19b356eca3c95f405649dcad282222a306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/5d4e0489bad530d511c988afacf336ed087fa765",
-                "reference": "5d4e0489bad530d511c988afacf336ed087fa765",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/c3db5d19b356eca3c95f405649dcad282222a306",
+                "reference": "c3db5d19b356eca3c95f405649dcad282222a306",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4",
+                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5",
                 "psr/clock": "^1.0",
                 "psr/container": "^2.0.2",
                 "psr/event-dispatcher": "^1.0",
@@ -182,7 +162,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "32.0.0-dev"
+                    "dev-master": "34.0.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -204,7 +184,7 @@
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
                 "source": "https://github.com/nextcloud-deps/ocp/tree/master"
             },
-            "time": "2025-02-22T00:42:30+00:00"
+            "time": "2026-02-18T08:26:21+00:00"
         },
         {
             "name": "psr/clock",
