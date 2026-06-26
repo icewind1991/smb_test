@@ -23,10 +23,11 @@
 namespace OCA\SMBTest;
 
 use Icewind\SMB\BasicAuth;
+use Icewind\SMB\IShare;
 use Icewind\SMB\ServerFactory;
 
 class ShareFactory {
-	public function getShare($hostname, $username, $workgroup, $password, $share) {
+	public function getShare(string $hostname, string $username, string $workgroup, string $password, string $share): IShare {
 		$auth = new BasicAuth($username, $workgroup, $password);
 		$factory = new ServerFactory();
 		$server = $factory->createServer($hostname, $auth);
