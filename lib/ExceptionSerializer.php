@@ -70,7 +70,7 @@ class ExceptionSerializer {
 		'setupUser',
 	];
 
-	private function filterTrace(array $trace) {
+	private function filterTrace(array $trace): array {
 		$sensitiveValues = [];
 		$trace = array_map(function (array $traceLine) use (&$sensitiveValues) {
 			foreach (self::methodsWithSensitiveParameters as $sensitiveMethod) {
@@ -88,7 +88,7 @@ class ExceptionSerializer {
 		}, $trace);
 	}
 
-	private function removeValuesFromArgs($args, $values) {
+	private function removeValuesFromArgs(array $args, array $values): array {
 		foreach ($args as &$arg) {
 			if (in_array($arg, $values, true)) {
 				$arg = '*** sensitive parameter replaced ***';
@@ -99,7 +99,7 @@ class ExceptionSerializer {
 		return $args;
 	}
 
-	private function encodeTrace($trace) {
+	private function encodeTrace(array $trace): array {
 		$filteredTrace = $this->filterTrace($trace);
 		return array_map(function (array $line) {
 			$line['args'] = array_map([$this, 'encodeArg'], $line['args'] ?? []);
@@ -107,7 +107,7 @@ class ExceptionSerializer {
 		}, $filteredTrace);
 	}
 
-	private function encodeArg($arg) {
+	private function encodeArg(mixed $arg): mixed {
 		if (is_object($arg)) {
 			$data = get_object_vars($arg);
 			$data['__class__'] = get_class($arg);
@@ -119,7 +119,7 @@ class ExceptionSerializer {
 		}
 	}
 
-	public function serializeException(\Throwable $exception) {
+	public function serializeException(\Throwable $exception): array {
 		$data = [
 			'Exception' => get_class($exception),
 			'Message' => $exception->getMessage(),

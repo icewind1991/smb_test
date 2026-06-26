@@ -33,18 +33,15 @@ use OCP\AppFramework\Controller;
 use OCP\IRequest;
 
 class SmbController extends Controller {
-	private $shareFactory;
-
 	public function __construct(
 		$AppName,
 		IRequest $request,
-		ShareFactory $shareFactory,
+		private readonly ShareFactory $shareFactory,
 	) {
 		parent::__construct($AppName, $request);
-		$this->shareFactory = $shareFactory;
 	}
 
-	public function info() {
+	public function info(): array {
 		if (class_exists('Icewind\SMB\ServerFactory')) {
 			$auth = new AnonymousAuth();
 			$factory = new ServerFactory();
@@ -58,17 +55,7 @@ class SmbController extends Controller {
 			];
 		}
 	}
-
-	/**
-	 * @param string $hostname
-	 * @param string $username
-	 * @param string $workgroup
-	 * @param string $password
-	 * @param string $share
-	 * @param string $path
-	 * @return array
-	 */
-	public function stat($hostname, $username, $workgroup, $password, $share, $path) {
+	public function stat(string $hostname, string $username, string $workgroup, string $password, string $share, string $path): array {
 		try {
 			$share = $this->shareFactory->getShare($hostname, $username, $workgroup, $password, $share);
 			$data = $this->encodeFileInfo($share->stat($path));
@@ -84,16 +71,7 @@ class SmbController extends Controller {
 		}
 	}
 
-	/**
-	 * @param string $hostname
-	 * @param string $username
-	 * @param string $workgroup
-	 * @param string $password
-	 * @param string $share
-	 * @param string $path
-	 * @return array
-	 */
-	public function dir($hostname, $username, $workgroup, $password, $share, $path) {
+	public function dir(string $hostname, string $username, string $workgroup, string $password, string $share, string $path): array {
 		try {
 			$share = $this->shareFactory->getShare($hostname, $username, $workgroup, $password, $share);
 			$root = $this->encodeFileInfo($share->stat($path));
@@ -111,7 +89,7 @@ class SmbController extends Controller {
 		}
 	}
 
-	private function encodeFileInfo(IFileInfo $info) {
+	private function encodeFileInfo(IFileInfo $info): array {
 		try {
 			$info->isHidden();
 			return [
@@ -134,7 +112,7 @@ class SmbController extends Controller {
 		}
 	}
 
-	private function encodeException(\Exception $e) {
+	private function encodeException(\Exception $e): array {
 		return (new ExceptionSerializer())->serializeException($e);
 	}
 }
